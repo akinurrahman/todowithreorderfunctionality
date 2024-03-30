@@ -4,7 +4,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { MdDelete } from "react-icons/md";
 import { IoMenu } from "react-icons/io5";
 
-const TodoItem = ({ task, handleDeleteTodo }) => {
+const TodoItem = ({ task, handleDeleteTodo, handleTaskCompleted }) => {
   const { id, title, completed } = task;
 
   // Use useSortable hook to enable drag and drop functionality
@@ -29,6 +29,7 @@ const TodoItem = ({ task, handleDeleteTodo }) => {
           <IoMenu className="text-gray-400 cursor-move" />
         </div>
         <p
+          onClick={() => handleTaskCompleted(id)}
           className={`${
             completed && "line-through"
           } text-gray-800 font-medium `}

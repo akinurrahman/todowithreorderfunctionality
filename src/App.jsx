@@ -82,6 +82,19 @@ const App = () => {
     setTasks((prev) => [...prev, value]);
   };
 
+  // handle adding completed
+  const handleTaskCompleted = (id) => {
+    const updatedTasks = [...tasks];
+    const taskIndex = updatedTasks.findIndex((task) => task.id === id);
+
+    if (taskIndex !== -1) {
+      updatedTasks[taskIndex] = { ...updatedTasks[taskIndex], completed: true };
+
+      setTasks(updatedTasks);
+      storeTodosInLocalStorage(updatedTasks);
+    }
+  };
+
   return (
     <div className="App min-h-screen bg-gray-100 px-3">
       <h1 className="text-3xl font-semibold text-center py-6">My Tasks ✅</h1>
@@ -94,6 +107,7 @@ const App = () => {
           tasks={tasks}
           handleDeleteTodo={handleDeleteTodo}
           handleAddTodo={handleAddTodo}
+          handleTaskCompleted={handleTaskCompleted}
         />
       </DndContext>
     </div>

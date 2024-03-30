@@ -6,7 +6,12 @@ import {
 import TodoItem from "./TodoItem";
 import TodoForm from "./TodoForm";
 
-const TodoList = ({ tasks, handleDeleteTodo, handleAddTodo }) => {
+const TodoList = ({
+  tasks,
+  handleDeleteTodo,
+  handleAddTodo,
+  handleTaskCompleted,
+}) => {
   // State to control the visibility of the TodoForm
   const [showForm, setShowForm] = useState(false);
 
@@ -26,6 +31,7 @@ const TodoList = ({ tasks, handleDeleteTodo, handleAddTodo }) => {
             key={task.id}
             task={task}
             handleDeleteTodo={handleDeleteTodo}
+            handleTaskCompleted={handleTaskCompleted}
           />
         ))}
       </SortableContext>
